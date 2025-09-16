@@ -14,11 +14,28 @@
     :root{--bg:#ffffff;--card:#fff9f0;--muted:#4b5563;--accent:#ef4444;--accent2:#0ea5a3}
     html,body{height:100%;margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,'Helvetica Neue',Arial;background:var(--bg);color:#0f1724}
     .container{max-width:1100px;margin:28px auto;padding:18px}
-    header{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+    header{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;position:relative}
     h1{margin:0;font-size:22px}
     .controls{display:flex;align-items:center}
     .controls button{margin-left:8px;padding:8px 12px;border-radius:8px;border:0;background:var(--accent2);color:white;cursor:pointer}
     .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+
+    /* "Made by" pill (center top) */
+    .madeBy{
+      position:absolute;
+      left:50%;
+      transform:translateX(-50%);
+      top:-18px;
+      background:linear-gradient(90deg,#ffffff,#f0fdf4);
+      padding:6px 12px;
+      border-radius:999px;
+      border:1px solid rgba(15,23,36,0.06);
+      font-weight:700;
+      box-shadow:0 8px 20px rgba(2,6,23,0.06);
+      font-size:13px;
+      color:var(--muted);
+      z-index:20;
+    }
 
     /* Pokémon-card style */
     .pcard{background:linear-gradient(180deg,#fff,#fff7ed);border-radius:14px;border:3px solid #fde68a;box-shadow:0 12px 30px rgba(15,23,42,0.06);overflow:hidden;display:flex;flex-direction:column}
@@ -53,12 +70,18 @@
 
     .delete-lock{font-size:12px;color:#7f1d1d;margin-left:6px}
 
-    @media (max-width:520px){.pcard .art{height:120px}}
+    @media (max-width:520px){
+      .pcard .art{height:120px}
+      .madeBy{top:-12px;font-size:12px;padding:5px 10px}
+    }
   </style>
 </head>
 <body>
   <div class="container">
     <header>
+      <!-- Centered rounded pill -->
+      <div class="madeBy" aria-hidden="true">made by ZEYAD</div>
+
       <h1>Mini Shop</h1>
       <div class="controls">
         <button id="addProductBtn" class="btn">➕ Add product</button>
@@ -188,8 +211,6 @@
             </div>
           </div>
         </div>
-
-      
 
       <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:12px">
         <button id="tutorialClose" class="btn small">Close</button>
